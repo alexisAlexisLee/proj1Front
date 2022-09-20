@@ -1,3 +1,10 @@
+#logo {
+    text-align: justify;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+}
+
 #word {
 
     font-family: 'Droid Sans';
@@ -14,10 +21,34 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#logo {
-    text-align: justify;
-    position: relative;
+#image {
+    margin-top: 2em;
+}
 
-    display: flex;
-    justify-content: space-between;
+.box {
+    margin-left: 4em;
+    justify-content: space-around;
+}
+
+.title {
+    width: 240px;
+    height: 37px;
+    left: 49px;
+    top: 202px;
+
+    font-family: 'Droid Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.wordbox {
+    display: table-cell;
+    vertical-align: text-bottom;
+    height: 50px;
+    position: relative;
 }
