@@ -27,7 +27,8 @@
 
 .box {
     margin-left: 4em;
-    justify-content: space-around;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .title {
@@ -51,4 +52,44 @@
     vertical-align: text-bottom;
     height: 50px;
     position: relative;
+}
+
+.wordbox label {
+    display: block
+}
+
+
+#button {
+    width: 214px;
+    height: 41px;
+    left: calc(50% - 214px/2 + 540px);
+    top: calc(50% - 41px/2 - 252.5px);
+
+    background: #068CEC;
+    box-shadow: 0px 8px 4px rgba(21, 51, 16, 0.25);
+}
+
+.buttonWord {
+    margin-top: auto;
+    width: 196px;
+    height: 45px;
+    left: calc(50% - 214px/2 + 540px);
+    top: calc(50% - 41px/2 - 252.5px);
+    font-family: 'Droid Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 45px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+table{
+    margin-left: 2em;
+    width: 50%;
+}
+tr {
+    border: solid;
 }
