@@ -93,3 +93,7 @@ table{
 tr {
     border: solid;
 }
+.map {
+    display: flex;
+    justify-content: space-evenly;
+}
