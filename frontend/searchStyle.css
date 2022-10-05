@@ -121,14 +121,22 @@
 
     color: #FFFFFF;
 }
-table{
+
+table {
     margin-left: 2em;
     width: 50%;
 }
+
 tr {
     border: solid;
 }
-.map {
+
+.map1 {
     display: flex;
     justify-content: space-evenly;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
 }
