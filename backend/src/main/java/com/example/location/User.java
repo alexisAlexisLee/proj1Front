@@ -1,31 +1,37 @@
 package com.example.location;
 
 import org.springframework.data.annotation.Id;
-import java.util.UUID;
 
 public class User {
     @Id
-    private UUID id;
+    private String id;
     private String username;
+    private String password;
 
-    private User(UUID id, String username){
-        this.id = id;
-        this.username = username;
+    private User(){
     }
 
     public String getUserName() {
         return this.username;
     }
-    public UUID getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(UUID id) {
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
