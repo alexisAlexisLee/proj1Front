@@ -1,0 +1,5 @@
+com\example\location\Firebase.class
+com\example\location\LocationApplication.class
+com\example\location\User.class
+com\example\location\UserController.class
+com\example\location\UserService.class
