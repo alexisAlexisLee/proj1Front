@@ -1,3 +1,8 @@
+@font-face {
+    font-family: DroidSans;
+    src: url(Fonts/DroidSans.ttf);
+}
+
 #logo {
     text-align: justify;
     position: relative;
@@ -7,7 +12,7 @@
 
 #word {
 
-    font-family: 'Droid Sans';
+    font-family: 'DroidSans';
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
@@ -61,7 +66,7 @@
     left: 49px;
     top: 202px;
 
-    font-family: 'Droid Sans';
+    font-family: 'DroidSans';
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
@@ -91,6 +96,9 @@
 
     background: #068CEC;
     box-shadow: 0px 8px 4px rgba(21, 51, 16, 0.25);
+
+    cursor: pointer;
+    border-width: 0px;
 }
 
 #logout {
@@ -102,18 +110,22 @@
     background: #068CEC;
     box-shadow: 0px 8px 4px rgba(21, 51, 16, 0.25);
     float: right;
+
+    cursor: pointer;
+    border-width: 0px;
 }
 
 .buttonWord {
     margin-top: auto;
+    padding-bottom: 30px;
     width: 196px;
     height: 45px;
-    left: calc(50% - 214px/2 + 540px);
+    left: calc(50% - 214px/2 + 560px);
     top: calc(50% - 41px/2 - 252.5px);
-    font-family: 'Droid Sans';
+    font-family: 'DroidSans';
     font-style: normal;
     font-weight: 700;
-    font-size: 38px;
+    font-size: 30px;
     line-height: 45px;
     /* identical to box height */
 

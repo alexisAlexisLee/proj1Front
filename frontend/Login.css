@@ -141,7 +141,7 @@ input {
 .bottom-text {
     text-align: center;
     width: 100%;
-    margin-top: -7px;
+    margin-top: 10px;
 
     font-family: 'DroidSans';
     font-size: 13px;
