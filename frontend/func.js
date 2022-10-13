@@ -35,6 +35,11 @@ function setup() {
 
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
+
+  const contentString = "xxxx";
+  infowindow = new google.maps.InfoWindow({
+  content: contentString,
+  });
 }
 
 function callback(results, status) {
@@ -53,8 +58,18 @@ function createMarker(place) {
     position: place.geometry.location,
   });
 
+  marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+      shouldFocus: false,
+    });
+  });
+
   google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
+    //map.setZoom(13);
+    //map.setCenter(marker.getPosition());
+    infowindow.setContent((place.name + ", " + String(place.rating) + ", " + String(place.price_level)) || "");
     infowindow.open(map);
   });
 }
