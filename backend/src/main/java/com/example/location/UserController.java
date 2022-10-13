@@ -12,20 +12,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // //checks if username exists in database
-    // @GetMapping ("/findUser/{username}")
-    // public boolean findUsernameExists (@PathVariable String username) throws InterruptedException, ExecutionException {
-    //     return userService.existsUser(username);
-    // }
+    //checks if username exists in database
+    @CrossOrigin
+    @GetMapping ("/find-user/{username}")
+    public boolean findUsernameExists (@PathVariable String username) throws InterruptedException, ExecutionException {
+        return userService.existsUser(username);
+    }
 
-    // //returns the corresponding password to inputted username
-	// @GetMapping("/match-credentials/{username}")
-	// public String getPassword (@PathVariable String username, @PathVariable String password) throws InterruptedException, ExecutionException {
-	// 	return userService.getPasswordByUsername(username);
-	// }
+    //returns the corresponding password to inputted username
+    @CrossOrigin
+	@GetMapping("/match-credentials/{username}")
+	public String getPassword (@PathVariable String username) throws InterruptedException, ExecutionException {
+		return userService.getPasswordByUsername(username);
+	}
 
     //create new user
-    @PostMapping("/newUser")
+    @CrossOrigin
+    @PostMapping("/new-user")
     public String createUser(@RequestBody User user) throws ExecutionException, InterruptedException{
         return userService.createUser(user);
     }

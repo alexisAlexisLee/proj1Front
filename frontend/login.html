@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="Login.css">
+    <script src="Login.js"></script>
 
     <title>Document</title>
 </head>
@@ -23,16 +24,16 @@
         <h1>Welcome Back</h1>
         <small class="login-text">Username</small>
         <br>
-        <input type="text" id="username">
+        <input type="text" id="username" required>
         <br>
         <small class="login-text">Password</small>
         <br>
-        <input type="password" id="password">
+        <input type="password" id="password" required>
         <br>
-        <div id="login-button">GO</div>
+        <button id="login-button" onclick="login()">GO</button>
         <br>
-        <p class="bottom-text" id="forgot-password">Forgot your password?</p>
-        <p class="bottom-text" id="create-account">Create a new account</p>
+        <p class="bottom-text" >Forgot your password?</p>
+        <p class="bottom-text" onclick="location.href='NewAccount.html'">Create a new account</p>
     </div>
 </body>
 
