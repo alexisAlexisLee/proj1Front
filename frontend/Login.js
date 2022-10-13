@@ -1,7 +1,6 @@
 const url = "http://localhost:8080";
 
-
-function login() {
+async function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
@@ -10,24 +9,46 @@ function login() {
         return;
     }
 
-    console.log(checkIfUsernameExists(username));
+    var res = false;
 
-    // if (checkIfUsernameExists(username)) {
-    //     if (getPasswordByUsername(username)===password) {
-    //         location.href = 'search.html';
-    //         return;
-    //     } else {
-    //         alert("The credentials entered did not match any records. Please try again.");
-    //         document.getElementsByClassName("password").value = "";
-    //         return;
-    //     }
-    // } else {
-    //     alert("That username does not exist. Please try again.");
-    //     return;
-    // }
+    await fetch(url+"/users/find-user/"+username, {method: 'GET', mode: 'cors'})
+    .then(response => response.json())
+    .then((result) => {
+      res = result;
+    })
+    .catch(error => {
+        console.error('Error:', error); 
+    });
+
+    console.log(res);
+
+    if (res) {
+        var pass="";
+
+        await fetch(url+"/users/match-credentials/"+username, {method: 'GET', mode: 'cors'})
+        .then(response => response.json())
+        .then((result) => {
+            pass=result[0];
+        })
+        .catch(error => {
+            console.error('Error:', error); 
+        });
+
+        if (pass===password) {
+            location.href = 'search.html';
+            return;
+        } else {
+            alert("The credentials entered did not match any records. Please try again.");
+            document.getElementsByClassName("password").value = "";
+            return;
+        }
+    } else {
+        alert("That username does not exist. Please try again.");
+        return;
+    }
 }
 
-function createUser() {
+async function createUser() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
@@ -36,47 +57,38 @@ function createUser() {
         return;
     }
 
-    if (checkIfUsernameExists(username)) {
+    var res = false;
+
+    await fetch(url+"/users/find-user/"+username, {method: 'GET', mode: 'cors'})
+    .then(response => response.json())
+    .then((result) => {
+      res = result;
+    })
+    .catch(error => {
+        console.error('Error:', error); 
+    });
+
+    console.log(res);
+
+    if (res) {
         alert("Sorry! The username "+" is taken. Please try another.");
         return;
     }
 
-    const req = new XMLHttpRequest();
-    req.open('POST', url+"/users/new-user");
-    console.log(JSON.stringify({"username": username, "password": password}));
-    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    req.send(JSON.stringify({"username": username, "password": password}));
-    req.onreadystatechange = (e) => {
+    await fetch(url+"/users/new-user/", 
+    { method: 'POST', 
+    mode: 'cors',
+    body: JSON.stringify({"username": username, "password": password}), 
+    headers: {
+        'Content-Type': 'application/json'
+    }})
+    .catch(error => {
+        console.error('Error:', error); 
+    });
 
-    };
     alert("You have successfully created an account!");
     location.href = 'search.html';
     return;
-}
-
-function checkIfUsernameExists(username) {
-    var a;
-    const req = new XMLHttpRequest();
-    req.open('GET', url+"/users/find-user/"+username);
-    req.send();
-    req.onreadystatechange = (e) => {
-        if (req.readyState === 4 && req.status === 200) {
-            a = exec(req.responseText);
-        }
-    };
-    return a;
-}
-
-function exec(text) {
-    var bool;
-    if (text==='true') {
-        console.log("entered");
-        bool = true;
-    } else {
-        bool = false;
-    }
-    console.log("inside"+bool);
-    return bool;
 }
 
 function getPasswordByUsername(username) {
