@@ -43,12 +43,20 @@ function setup() {
 }
 
 function callback(results, status) {
+  var array = [];
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
+      var cur = results[i];
+      const entry = {name: cur.name, rating: cur.rating, price_level: cur.price_level};
+      array.push(entry);
     }
   }
+  console.log(array);
+  //fillChart(array);
 }
+
+//function fillChart(arr) {}
 
 function createMarker(place) {
   if (!place.geometry || !place.geometry.location) return;
