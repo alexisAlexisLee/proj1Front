@@ -8,13 +8,8 @@ import com.google.firebase.cloud.FirestoreClient;
 import com.google.cloud.firestore.*;
 import com.google.api.core.ApiFuture;
 
-import org.slf4j.Logger; 
-import org.slf4j.LoggerFactory; 
-
 @Service
 public class UserService {
-
-    Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private static final String COLLECTION = "accounts";
 

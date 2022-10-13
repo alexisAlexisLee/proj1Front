@@ -14,6 +14,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/")
+    public String returnStr() {
+        return "hello";
+    }
+
     //checks if username exists in database
     @CrossOrigin
     @GetMapping ("/find-user/{username}")
