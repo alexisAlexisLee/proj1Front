@@ -33,10 +33,12 @@ function createUser() {
         return;
     }
 
+    console.log("yo"+checkIfUsernameExists(username));
     if (checkIfUsernameExists(username)) {
         alert("Sorry! The username "+" is taken. Please try another.");
         return;
     }
+    return;
 
     fetch(url+"/users/new-user", {method: 'POST', mode: 'cors', body: {"username": username, "password": password}})
     .then(response => response.json())
@@ -51,24 +53,34 @@ function createUser() {
 }
 
 function checkIfUsernameExists(username) {
-    var res = true;
+    // var res;
+    // const req = new XMLHttpRequest();
+    // req.open('POST', url+"/users/find-user/"+username);
+    // req.send();
+    // req.onreadystatechange = (e) => res=req.responseText;
+    // console.log(res);
+    // return res;
+
+    var res;
     fetch(url+"/users/find-user/"+username, {method: 'GET', mode: 'cors'})
     .then(response => response.json())
     .then((result) => {
       console.log(result);
+      console.log(typeof(result));
       return result;
     })
     .catch(error => {
         console.error('Error:', error); 
-        res = false;
+        res = "false";
     });
+    console.log("fuck"+res);
     return res;
 }
 
 function getPasswordByUsername(username) {
     var pass;
     fetch(url+"/users/match-credentials/"+username, {method: 'GET', mode: 'cors'})
-    .then(response => response.json())
+    .then(response => response.text())
     .then((password) => {
       console.log(password);
       pass = password;
