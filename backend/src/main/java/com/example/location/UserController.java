@@ -15,8 +15,11 @@ public class UserController {
     //checks if username exists in database
     @CrossOrigin
     @GetMapping ("/find-user/{username}")
-    public boolean findUsernameExists (@PathVariable String username) throws InterruptedException, ExecutionException {
-        return userService.existsUser(username);
+    public String findUsernameExists (@PathVariable String username) throws InterruptedException, ExecutionException {
+        boolean e = userService.existsUser(username);
+        if (e)
+            return "true";
+        return "false";
     }
 
     //returns the corresponding password to inputted username
@@ -29,7 +32,7 @@ public class UserController {
     //create new user
     @CrossOrigin
     @PostMapping("/new-user")
-    public String createUser(@RequestBody User user) throws ExecutionException, InterruptedException{
-        return userService.createUser(user);
+    public void createUser(@RequestBody User user) throws ExecutionException, InterruptedException{
+        userService.createUser(user);
     }
 }
