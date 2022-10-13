@@ -79,7 +79,7 @@ function createMarker(place) {
   google.maps.event.addListener(marker, "click", () => {
     //map.setZoom(13);
     //map.setCenter(marker.getPosition());
-    infowindow.setContent((place.name + ", " + String(place.rating) + ", " + String(place.price_level)) || "");
+    infowindow.setContent(("Name :" + place.name + ", " + "Rating: " + String(place.rating) + ", " + "price_level: "  + String(place.price_level)) || "");
     infowindow.open(map);
   });
 }
