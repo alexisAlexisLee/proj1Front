@@ -4,8 +4,8 @@ var infowindow;
 
 function myMap() {
   var mapProp = {
-    center: new google.maps.LatLng(33.775373, -84.396847),
-    zoom: 12,
+      center: new google.maps.LatLng(33.775373, -84.396847),
+      zoom: 12,
   };
   map = new google.maps.Map(document.getElementById('map'), mapProp);
 }
@@ -47,14 +47,8 @@ function callback(results, status) {
 
 function createMarker(place) {
   if (!place.geometry || !place.geometry.location) return;
-  console.log(map);
   const marker = new google.maps.Marker({
     map,
     position: place.geometry.location,
-  });
-
-  google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
-    infowindow.open(map);
   });
 }
