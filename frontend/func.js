@@ -53,8 +53,12 @@ function callback(results, status) {
     }
   }
   console.log(array);
-
-  
+  table = document.getElementById("table");
+  for (var i = 1; i < table.rows.length; i++) {
+    table.rows[i].cells[0].innerHTML = array[i].name;
+    table.rows[i].cells[1].innerHTML = array[i].rating;
+    table.rows[i].cells[2].innerHTML = array[i].price_level;
+  }
 }
 
 function createMarker(place) {
